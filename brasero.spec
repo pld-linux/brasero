@@ -45,6 +45,11 @@ GNOME. Jest zaprojektowany by byæ prostym i ³atwym w obs³udze.
 %patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure %{?!with_beagle:--disable-search}
 %{__make}
 
