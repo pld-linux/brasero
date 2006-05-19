@@ -6,7 +6,7 @@ Summary:	Disc burning application for GNOME
 Summary(pl):	Program do wypalania dysków dla GNOME
 Name:		bonfire
 Version:	0.3.1
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications
 Source0:	http://perso.wanadoo.fr/bonfire/%{name}-%{version}.tar.bz2
