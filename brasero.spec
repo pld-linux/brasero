@@ -4,7 +4,7 @@ Name:		bonfire
 Version:	0.3.1
 Release:	1
 License:	GPL v2
-Group:		Applications
+Group:		X11/Applications
 Source0:	http://perso.wanadoo.fr/bonfire/%{name}-%{version}.tar.bz2
 # Source0-md5:	db94c7ae5ac5c27cf7d66fafc3654f4f
 Patch0:		%{name}-desktop.patch
