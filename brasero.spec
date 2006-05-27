@@ -13,6 +13,8 @@ Source0:	http://perso.wanadoo.fr/bonfire/%{name}-%{version}.tar.bz2
 # Source0-md5:	db94c7ae5ac5c27cf7d66fafc3654f4f
 Patch0:		%{name}-desktop.patch
 URL:		http://perso.wanadoo.fr/bonfire/
+BuildRequires:	autoconf
+BuildRequires:	automake
 %{?with_beagle:BuildRequires:	beagle-devel >= 0.1.0}
 BuildRequires:	dbus-glib-devel >= 0.30
 BuildRequires:	gdl-devel >= 0.5.0
@@ -24,6 +26,7 @@ BuildRequires:	hal-devel >= 0.5
 BuildRequires:	intltool >= 0.25
 BuildRequires:	libgnomeui-devel >= 2.10.0
 BuildRequires:	libnotify-devel >= 0.3.0
+BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.6.0
 BuildRequires:	nautilus-cd-burner-devel >= 2.12.0
 BuildRequires:	pkgconfig
@@ -50,7 +53,8 @@ GNOME. Jest zaprojektowany by byæ prostym i ³atwym w obs³udze.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure %{?!with_beagle:--disable-search}
+%configure \
+	%{!?with_beagle:--disable-search}
 %{__make}
 
 %install
