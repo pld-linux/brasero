@@ -5,12 +5,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl):	Program do wypalania dysków dla GNOME
 Name:		bonfire
-Version:	0.3.1
-Release:	3
+Version:	0.3.90
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://perso.wanadoo.fr/bonfire/%{name}-%{version}.tar.bz2
-# Source0-md5:	db94c7ae5ac5c27cf7d66fafc3654f4f
+Source0:	http://dl.sourceforge.net/bonfire/%{name}-%{version}.tar.bz2
+# Source0-md5:	73aa9b1b8d1eaabe651ac4bfa51c9136
 Patch0:		%{name}-desktop.patch
 URL:		http://perso.wanadoo.fr/bonfire/
 BuildRequires:	autoconf
