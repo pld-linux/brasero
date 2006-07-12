@@ -5,8 +5,8 @@ diff -aurN bonfire-0.3.0.orig/data/bonfire.desktop.in bonfire-0.3.0/data/bonfire
  [Desktop Entry]
  _Name=Disc burning application
  _Comment=Write and copy CD / DVD
--Categories=GNOME;Application;System;Utility;
+-Categories=GNOME;Application;AudioVideo;
 +Categories=GTK;GNOME;AudioVideo;DiscBurning;
  Encoding=UTF-8
- Exec=bonfire
+ Exec=bonfire %U
  Icon=bonfire.png
