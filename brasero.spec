@@ -51,7 +51,7 @@ GNOME. Jest zaprojektowany by byæ prostym i ³atwym w obs³udze.
 %{__autoheader}
 %{__automake}
 %configure \
-	%{!?with_beagle:--disable-search}
+	--disable-caches
 %{__make}
 
 %install
