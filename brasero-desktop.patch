@@ -1,0 +1,12 @@
+diff -aurN brasero-0.4.90.orig/data/brasero.desktop.in bonfire-0.3.0/data/bonfire.desktop.in
+--- brasero-0.4.90.orig/data/brasero.desktop.in	2006-05-11 18:11:56.000000000 +0200
++++ brasero-0.4.90/data/brasero.desktop.in	2006-05-16 22:38:47.290604248 +0200
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ _Name=Disc burning application
+ _Comment=Write and copy CD / DVD
+-Categories=GNOME;Application;AudioVideo;
++Categories=GTK;GNOME;AudioVideo;DiscBurning;
+ Encoding=UTF-8
+ Exec=brasero %U
+ Icon=brasero.png
