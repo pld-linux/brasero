@@ -4,13 +4,13 @@
 #
 Summary:	Disc burning application for GNOME
 Summary(pl):	Program do wypalania dysków dla GNOME
-Name:		bonfire
-Version:	0.4.0
+Name:		brasero
+Version:	0.4.90
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/bonfire/%{name}-%{version}.tar.bz2
-# Source0-md5:	deb7f1652a7d94c00223cd65b603aad1
+# Source0-md5:	172a8feb5bf0e68bb3cb94d97583cdbd
 Patch0:		%{name}-desktop.patch
 URL:		http://perso.wanadoo.fr/bonfire/
 BuildRequires:	autoconf
@@ -36,11 +36,11 @@ Requires:	hal >= 0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Bonfire is a CD/DVD mastering tool for the GNOME desktop.
+Brasero is a CD/DVD mastering tool for the GNOME desktop.
 It is designed to be simple and easy to use.
 
 %description -l pl
-Bonfire jest narzêdziem do masteringu p³yt CD/DVD dla biurka
+Brasero jest narzêdziem do masteringu p³yt CD/DVD dla biurka
 GNOME. Jest zaprojektowany by byæ prostym i ³atwym w obs³udze.
 
 %prep
@@ -54,7 +54,8 @@ GNOME. Jest zaprojektowany by byæ prostym i ³atwym w obs³udze.
 %{__autoheader}
 %{__automake}
 %configure \
-	%{!?with_beagle:--disable-search}
+	%{!?with_beagle:--disable-search} \
+	--disable-caches
 %{__make}
 
 %install
@@ -63,21 +64,33 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+mv $RPM_BUILD_ROOT%{_iconsdir}/{gnome,hicolor}
+
 %find_lang %{name} --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%gconf_schema_install brasero.schemas
 %update_desktop_database_post
+%update_mime_database
+%update_icon_cache hicolor
 
 %postun
+%gconf_schema_uninstall brasero.schemas
 %update_desktop_database_postun
+%update_mime_database
+%update_icon_cache hicolor
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README TODO.tasks
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
+%{_datadir}/mime/packages/%{name}.xml
 %{_desktopdir}/*.desktop
+%{_iconsdir}/hicolor/*/*/*.png
+%{_mandir}/man1/*
 %{_pixmapsdir}/*.png
+%{_sysconfdir}/gconf/schemas/*
