@@ -33,6 +33,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	totem-devel >= 1.2.0
 Requires(post,postun):	desktop-file-utils
 Requires:	hal >= 0.5
+Obsoletes:	bonfire
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
