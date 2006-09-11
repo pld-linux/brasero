@@ -32,6 +32,7 @@ BuildRequires:	nautilus-cd-burner-devel >= 2.12.0
 BuildRequires:	pkgconfig
 BuildRequires:	totem-devel >= 1.2.0
 Requires(post,postun):	desktop-file-utils
+Requires(post,postun):	hicolor-icon-theme
 Requires:	hal >= 0.5
 Obsoletes:	bonfire
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
