@@ -5,12 +5,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl):	Program do wypalania dysków dla GNOME
 Name:		brasero
-Version:	0.4.4
+Version:	0.5.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/bonfire/%{name}-%{version}.tar.bz2
-# Source0-md5:	1ef6ae66677ed9136634692d8bc1cc7a
+# Source0-md5:	f578d2aaf6b434f91beb935f112728e2
 Patch0:		%{name}-desktop.patch
 URL:		http://perso.wanadoo.fr/bonfire/
 BuildRequires:	autoconf
@@ -66,29 +66,31 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv $RPM_BUILD_ROOT%{_iconsdir}/{gnome,hicolor}
-
 %find_lang %{name} --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%gconf_schema_install brasero.schemas
 %update_desktop_database_post
 %update_mime_database
 %update_icon_cache hicolor
 
 %postun
+%gconf_schema_uninstall brasero.schemas
 %update_desktop_database_postun
 %update_mime_database
 %update_icon_cache hicolor
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README TODO.tasks
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_datadir}/mime/packages/%{name}.xml
 %{_desktopdir}/*.desktop
 %{_iconsdir}/hicolor/*/*/*.png
-%{_pixmapsdir}/*.png
+%{_iconsdir}/hicolor/*/*/*.svg
+%{_mandir}/man1/*
+%{_sysconfdir}/gconf/schemas/*
