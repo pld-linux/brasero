@@ -3,7 +3,7 @@
 %bcond_without	beagle		# disable beagle search
 #
 Summary:	Disc burning application for GNOME
-Summary(pl):	Program do wypalania dysków dla GNOME
+Summary(pl.UTF-8):   Program do wypalania dyskÃ³w dla GNOME
 Name:		brasero
 Version:	0.5.1
 Release:	1
@@ -41,9 +41,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Brasero is a CD/DVD mastering tool for the GNOME desktop.
 It is designed to be simple and easy to use.
 
-%description -l pl
-Brasero jest narzêdziem do masteringu p³yt CD/DVD dla biurka
-GNOME. Jest zaprojektowany by byæ prostym i ³atwym w obs³udze.
+%description -l pl.UTF-8
+Brasero jest narzÄ™dziem do masteringu pÅ‚yt CD/DVD dla biurka
+GNOME. Jest zaprojektowany by byÄ‡ prostym i Å‚atwym w obsÅ‚udze.
 
 %prep
 %setup -q
