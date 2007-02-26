@@ -5,12 +5,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania dysków dla GNOME
 Name:		brasero
-Version:	0.5.1
+Version:	0.5.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/bonfire/%{name}-%{version}.tar.bz2
-# Source0-md5:	f578d2aaf6b434f91beb935f112728e2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/0.5/%{name}-%{version}.tar.bz2
+# Source0-md5:	2c23c4faa958c63b0e5b18c24420682c
 Patch0:		%{name}-desktop.patch
 URL:		http://perso.wanadoo.fr/bonfire/
 BuildRequires:	autoconf
