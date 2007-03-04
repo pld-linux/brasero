@@ -3,7 +3,7 @@
 %bcond_without	beagle		# disable beagle search
 #
 Summary:	Disc burning application for GNOME
-Summary(pl.UTF-8):	Program do wypalania dysków dla GNOME
+Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
 Version:	0.5.2
 Release:	1
