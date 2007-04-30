@@ -5,12 +5,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	0.5.2
+Version:	0.5.90
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/0.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	2c23c4faa958c63b0e5b18c24420682c
+# Source0-md5:	24be34ca4a06d790df6f1efccd1a1917
 Patch0:		%{name}-desktop.patch
 URL:		http://perso.wanadoo.fr/bonfire/
 BuildRequires:	autoconf
@@ -26,6 +26,8 @@ BuildRequires:	hal-devel >= 0.5
 BuildRequires:	intltool >= 0.25
 BuildRequires:	libgnomeui-devel >= 2.10.0
 BuildRequires:	libnotify-devel >= 0.3.0
+BuildRequires:	libselinux-devel
+BuildRequires:	libuuid-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 2.6.0
 BuildRequires:	nautilus-cd-burner-devel >= 2.12.0
