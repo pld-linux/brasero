@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
 Version:	0.6.1
 Release:	0.1
-License:	GPL v2
+License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/0.6/%{name}-%{version}.tar.bz2
 # Source0-md5:	fa3b59f06b93bd831805a73a81f3293f
@@ -15,23 +15,21 @@ Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{?with_beagle:BuildRequires:	beagle-devel >= 0.1.0}
-BuildRequires:	dbus-glib-devel >= 0.30
-BuildRequires:	gdl-devel >= 0.6.0
-BuildRequires:	gnome-vfs2-devel >= 2.12.0
+%{?with_beagle:BuildRequires:	beagle-devel >= 0.1.1}
+BuildRequires:	gnome-vfs2-devel >= 2.14.2
 BuildRequires:	gstreamer-devel >= 0.10.6
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
-BuildRequires:	gtk+2-devel >= 2:2.6.0
+BuildRequires:	gtk+2-devel >= 2:2.10.0
 BuildRequires:	hal-devel >= 0.5
-BuildRequires:	intltool >= 0.25
+BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libgnomeui-devel >= 2.10.0
 BuildRequires:	libnotify-devel >= 0.3.0
-BuildRequires:	libselinux-devel
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.6.0
+BuildRequires:	libxml2-devel >= 1:2.6.0
 BuildRequires:	nautilus-cd-burner-devel >= 2.12.0
 BuildRequires:	pkgconfig
 BuildRequires:	totem-devel >= 1.2.0
+# libburn >= 0.3.4, libisofs >= 0.2.8
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	hicolor-icon-theme
 Requires:	hal >= 0.5
