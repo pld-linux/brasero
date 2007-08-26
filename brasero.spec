@@ -12,7 +12,7 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/0.6/%{name}-%{version}.tar.bz2
 # Source0-md5:	33dfd95ec44aff5ff8dd99bd325e3f7b
 Patch0:		%{name}-desktop.patch
-URL:		http://perso.wanadoo.fr/bonfire/
+URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_beagle:BuildRequires:	beagle-devel >= 0.1.0}
