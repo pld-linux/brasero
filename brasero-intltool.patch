@@ -1,0 +1,11 @@
+--- brasero-0.6.1/intltool-merge.in~	2007-08-25 15:16:25.000000000 +0200
++++ brasero-0.6.1/intltool-merge.in	2007-08-29 05:31:12.929231191 +0200
+@@ -93,7 +93,7 @@
+ 
+ my %po_files_by_lang = ();
+ my %translations = ();
+-my $iconv = $ENV{"ICONV"} || $ENV{"INTLTOOL_ICONV"} || "@INTLTOOL_ICONV@";
++my $iconv = $ENV{"ICONV"} || $ENV{"INTLTOOL_ICONV"} || "iconv";
+ my $devnull = ($^O eq 'MSWin32' ? 'NUL:' : '/dev/null');
+ 
+ # Use this instead of \w for XML files to handle more possible characters.
