@@ -12,7 +12,6 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/0.6/%{name}-%{version}.tar.bz2
 # Source0-md5:	fa3b59f06b93bd831805a73a81f3293f
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-intltool.patch
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -48,10 +47,10 @@ GNOME. Jest zaprojektowany by być prostym i łatwym w obsłudze.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
+%{__intltoolize}
 %{__aclocal}
 %{__autoconf}
 %{__autoheader}
