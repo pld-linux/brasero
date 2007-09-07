@@ -24,6 +24,7 @@ BuildRequires:	hal-devel >= 0.5
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libgnomeui-devel >= 2.10.0
 BuildRequires:	libnotify-devel >= 0.3.0
+BuildRequires:  libselinux-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.0
 BuildRequires:	nautilus-cd-burner-devel >= 2.12.0
@@ -33,6 +34,7 @@ BuildRequires:	totem-devel >= 1.2.0
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	hicolor-icon-theme
 Requires:	hal >= 0.5
+Suggests:   dvd+rw-tools
 Obsoletes:	bonfire
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
