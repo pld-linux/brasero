@@ -24,7 +24,6 @@ BuildRequires:	hal-devel >= 0.5
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libgnomeui-devel >= 2.10.0
 BuildRequires:	libnotify-devel >= 0.3.0
-BuildRequires:	libselinux-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.0
 BuildRequires:	nautilus-cd-burner-devel >= 2.12.0
