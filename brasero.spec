@@ -1,3 +1,4 @@
+# TODO: check build/functionality with new libburn+libisofs
 #
 # Conditinal build:
 %bcond_without	beagle		# disable beagle search
