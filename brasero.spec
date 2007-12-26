@@ -23,7 +23,9 @@ BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
 BuildRequires:	gtk+2-devel >= 2:2.11.6
 BuildRequires:	hal-devel >= 0.5
 BuildRequires:	intltool >= 0.35.0
+BuildRequires:	libburn-devel >= 0.4.0
 BuildRequires:	libgnomeui-devel >= 2.10.0
+BuildRequires:	libisofs-devel >= 0.2.8
 BuildRequires:	libnotify-devel >= 0.3.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.0
