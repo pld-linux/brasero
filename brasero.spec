@@ -32,7 +32,6 @@ BuildRequires:	libxml2-devel >= 1:2.6.0
 BuildRequires:	nautilus-cd-burner-devel >= 2.16.0
 BuildRequires:	pkgconfig
 BuildRequires:	totem-devel >= 1.2.0
-# libburn >= 0.3.4, libisofs >= 0.2.8
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	hicolor-icon-theme
