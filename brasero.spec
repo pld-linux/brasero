@@ -6,12 +6,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	0.7.0
+Version:	0.7.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/0.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	b6ef754a108e2f2b64b815b283f51756
+# Source0-md5:	2754fca21c31f00016981cc8fe7c48be
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
@@ -31,7 +31,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.0
 BuildRequires:	nautilus-cd-burner-devel >= 2.16.0
 BuildRequires:	pkgconfig
-BuildRequires:	totem-devel >= 1.2.0
+BuildRequires:	totem-pl-parser-devel >= 1.2.0
 Requires(post,preun):	GConf2
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	hicolor-icon-theme
