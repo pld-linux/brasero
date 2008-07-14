@@ -6,13 +6,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	0.7.1
-Release:	3
+Version:	0.8.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/0.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	2754fca21c31f00016981cc8fe7c48be
-Patch0:		%{name}-desktop.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/0.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	1bba2b548bbc78accee859b45ddc3310
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -25,7 +24,7 @@ BuildRequires:	hal-devel >= 0.5
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libburn-devel >= 0.4.0
 BuildRequires:	libgnomeui-devel >= 2.10.0
-BuildRequires:	libisofs-devel >= 0.2.8
+BuildRequires:	libisofs-devel >= 0.6.4
 BuildRequires:	libnotify-devel >= 0.3.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.0
@@ -52,7 +51,6 @@ GNOME. Jest zaprojektowany by być prostym i łatwym w obsłudze.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -74,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 [ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
 	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
-%find_lang %{name} --all-name
+%find_lang %{name} --all-name --with-gnome --with-omf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
