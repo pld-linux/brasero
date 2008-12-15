@@ -6,12 +6,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	0.8.3
+Version:	0.8.4
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	ad710f4a0d5eaa3de76efebfc1a5d4fd
+# Source0-md5:	5d0ad796e1f7b68a31f8757f1b3f9aef
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	GConf2-devel >= 2.0.0
 BuildRequires:	autoconf
@@ -30,6 +30,7 @@ BuildRequires:	libgnomeui-devel >= 2.10.0
 BuildRequires:	libisofs-devel >= 0.6.4
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.0
+BuildRequires:	nautilus-devel >= 2.24.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -52,6 +53,19 @@ designed to be simple and easy to use.
 %description -l pl.UTF-8
 Brasero jest narzędziem do masteringu płyt CD/DVD dla biurka GNOME.
 Jest zaprojektowany by być prostym i łatwym w obsłudze.
+
+%package -n nautilus-extension-brasero
+Summary:	Brasero extension for Nautilus
+Summary(pl.UTF-8):	Rozszerzenie Brasero dla Nautilusa
+Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
+Requires:	nautilus >= 2.24.0
+
+%description -n nautilus-extension-brasero
+Adds Brasero integration to Nautilus.
+
+%description -n nautilus-extension-brasero -l pl.UTF-8
+Dodaje integrację Brasero z Nautilusem.
 
 %prep
 %setup -q
@@ -76,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} -f $RPM_BUILD_ROOT%{_libdir}/brasero/plugins/lib*.la
+%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.la
 
 [ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
 	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
@@ -112,3 +127,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/*/*.svg
 %{_mandir}/man1/*
 %{_sysconfdir}/gconf/schemas/brasero.schemas
+
+%files -n nautilus-extension-brasero
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-brasero-extension.so
