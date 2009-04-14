@@ -5,12 +5,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	2.26.0
+Version:	2.26.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.26/%{name}-%{version}.tar.bz2
-# Source0-md5:	ef968fe98874da4e26b61591ee57be4a
+# Source0-md5:	06bec1a0442b33de80151cc8253b7160
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf
