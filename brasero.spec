@@ -11,6 +11,7 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.27/%{name}-%{version}.tar.bz2
 # Source0-md5:	e4fa8381d3fbbc869ac4fb5da853fda2
+Patch0:		%{name}-configure.patch
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf
@@ -123,6 +124,9 @@ Dodaje integrację Brasero z Nautilusem.
 
 %prep
 %setup -q
+%patch0 -p1
+rm po/ca@valencia.po
+sed -i s#^ca@valencia## po/LINGUAS
 
 %build
 %{__libtoolize}
@@ -186,9 +190,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/brasero/plugins
 %attr(755,root,root) %{_libdir}/brasero/plugins/lib*.so
 %{_desktopdir}/brasero-copy-medium.desktop
-%{_desktopdir}/brasero-open-image.desktop
-%{_desktopdir}/brasero-open-playlist.desktop
-%{_desktopdir}/brasero-open-project.desktop
 %{_desktopdir}/brasero.desktop
 %{_iconsdir}/hicolor/*/*/*.png
 %{_iconsdir}/hicolor/*/*/*.svg
@@ -197,19 +198,29 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libbrasero-burn.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libbrasero-burn.so.0
 %attr(755,root,root) %{_libdir}/libbrasero-media.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libbrasero-media.so.0
+%attr(755,root,root) %{_libdir}/libbrasero-utils.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libbrasero-utils.so.0
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libbrasero-burn.so
 %attr(755,root,root) %{_libdir}/libbrasero-media.so
+%attr(755,root,root) %{_libdir}/libbrasero-utils.so
+%{_libdir}/libbrasero-burn.la
 %{_libdir}/libbrasero-media.la
+%{_libdir}/libbrasero-utils.la
 %{_includedir}/brasero
+%{_pkgconfigdir}/libbrasero-burn.pc
 %{_pkgconfigdir}/libbrasero-media.pc
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/brasero
+%{_gtkdocdir}/libbrasero-burn
+%{_gtkdocdir}/libbrasero-media
 
 %files -n nautilus-extension-brasero
 %defattr(644,root,root,755)
