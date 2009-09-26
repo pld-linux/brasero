@@ -5,12 +5,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	2.26.3
+Version:	2.28.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.26/%{name}-%{version}.tar.bz2
-# Source0-md5:	edf1b2b489a4686b84674dc7dbbd8130
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.28/%{name}-%{version}.tar.bz2
+# Source0-md5:	c88b85c15c03fd5198758c00f7375fa2
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf
@@ -136,8 +136,7 @@ Dodaje integrację Brasero z Nautilusem.
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
 	--disable-caches \
-	--disable-schemas-install \
-	--enable-static
+	--disable-schemas-install
 %{__make}
 
 %install
@@ -187,9 +186,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/brasero/plugins
 %attr(755,root,root) %{_libdir}/brasero/plugins/lib*.so
 %{_desktopdir}/brasero-copy-medium.desktop
-%{_desktopdir}/brasero-open-image.desktop
-%{_desktopdir}/brasero-open-playlist.desktop
-%{_desktopdir}/brasero-open-project.desktop
 %{_desktopdir}/brasero.desktop
 %{_iconsdir}/hicolor/*/*/*.png
 %{_iconsdir}/hicolor/*/*/*.svg
@@ -198,23 +194,29 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libbrasero-burn.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libbrasero-burn.so.0
 %attr(755,root,root) %{_libdir}/libbrasero-media.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libbrasero-media.so.0
+%attr(755,root,root) %{_libdir}/libbrasero-utils.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libbrasero-utils.so.0
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libbrasero-burn.so
 %attr(755,root,root) %{_libdir}/libbrasero-media.so
+%attr(755,root,root) %{_libdir}/libbrasero-utils.so
+%{_libdir}/libbrasero-burn.la
 %{_libdir}/libbrasero-media.la
+%{_libdir}/libbrasero-utils.la
 %{_includedir}/brasero
+%{_pkgconfigdir}/libbrasero-burn.pc
 %{_pkgconfigdir}/libbrasero-media.pc
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/libbrasero-media.a
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/brasero
+%{_gtkdocdir}/libbrasero-burn
+%{_gtkdocdir}/libbrasero-media
 
 %files -n nautilus-extension-brasero
 %defattr(644,root,root,755)
