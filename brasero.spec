@@ -5,12 +5,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	2.28.0
+Version:	2.28.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	c88b85c15c03fd5198758c00f7375fa2
+# Source0-md5:	ad422a966d100f99b027b6b4170e8ede
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf
@@ -24,12 +24,12 @@ BuildRequires:	gstreamer-devel >= 0.10.15
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
 BuildRequires:	gtk+2-devel >= 2:2.16.0
 Buildrequires:	gtk-doc >= 1.9
-BuildRequires:	hal-devel >= 0.5.10
 BuildRequires:	intltool >= 0.40.0
 %{?with_beagle:BuildRequires:	libbeagle-devel >= 0.3.0}
 BuildRequires:	libburn-devel >= 0.4.0
 BuildRequires:	libisofs-devel >= 0.6.4
 BuildRequires:	libtool
+BuildRequires:	libunique-devel >= 1.0.0
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	nautilus-devel >= 2.26.0
 BuildRequires:	pkgconfig
@@ -43,7 +43,6 @@ Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	hal >= 0.5.10
 Suggests:	dvd+rw-tools
 Obsoletes:	bonfire
 # sr@Latn vs. sr@latin
@@ -74,8 +73,9 @@ Summary:	Header files for Brasero library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Brasero
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	dbus-glib-devel >= 0.76
+Requires:	glib2-devel >= 1:2.20.0
 Requires:	gtk+2-devel >= 2:2.16.0
-Requires:	hal-devel >= 0.5.10
 
 %description devel
 Header files for Brasero library.
