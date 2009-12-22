@@ -1,4 +1,7 @@
 #
+# TODO:
+# - brasero doesn't burn audio cd from mp3 files (maybe gstreamer bug?)
+# 
 # Conditinal build:
 %bcond_without	beagle		# disable beagle search
 #
