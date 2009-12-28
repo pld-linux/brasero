@@ -1,7 +1,4 @@
 #
-# TODO:
-# - brasero doesn't burn audio cd from mp3 files (maybe gstreamer bug?)
-# 
 # Conditinal build:
 %bcond_without	beagle		# disable beagle search
 #
@@ -9,7 +6,7 @@ Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
 Version:	2.28.3
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.28/%{name}-%{version}.tar.bz2
@@ -47,6 +44,8 @@ Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
 Suggests:	dvd+rw-tools
+Suggests:	gstreamer-audio-effects-base
+Suggests:	gstreamer-audio-effects-good
 Obsoletes:	bonfire
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
