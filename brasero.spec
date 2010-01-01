@@ -23,7 +23,7 @@ BuildRequires:	gnome-doc-utils
 BuildRequires:	gstreamer-devel >= 0.10.15
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
 BuildRequires:	gtk+2-devel >= 2:2.16.0
-Buildrequires:	gtk-doc >= 1.9
+BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.0
 %{?with_beagle:BuildRequires:	libbeagle-devel >= 0.3.0}
 BuildRequires:	libburn-devel >= 0.4.0
