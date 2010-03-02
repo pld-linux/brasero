@@ -5,12 +5,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	2.28.3
-Release:	2
+Version:	2.29.91
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	6ef5cc07325f1869577a85d15ac67eb3
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.29/%{name}-%{version}.tar.bz2
+# Source0-md5:	06226d87a2af04703ebd8de3219a6fdc
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf
@@ -20,6 +20,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.20.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils
+BuildRequires:	gobject-introspection-devel
 BuildRequires:	gstreamer-devel >= 0.10.15
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
 BuildRequires:	gtk+2-devel >= 2:2.16.0
@@ -125,6 +126,8 @@ Dodaje integrację Brasero z Nautilusem.
 
 %prep
 %setup -q
+sed -i s#^en@shaw## po/LINGUAS
+rm po/en@shaw.po
 
 %build
 %{__gtkdocize}
@@ -203,6 +206,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libbrasero-media.so.0
 %attr(755,root,root) %{_libdir}/libbrasero-utils.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libbrasero-utils.so.0
+%{_libdir}/girepository-1.0/*.typelib
 
 %files devel
 %defattr(644,root,root,755)
@@ -215,6 +219,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/brasero
 %{_pkgconfigdir}/libbrasero-burn.pc
 %{_pkgconfigdir}/libbrasero-media.pc
+%{_datadir}/gir-1.0/*.gir
 
 %files apidocs
 %defattr(644,root,root,755)
