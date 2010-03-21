@@ -5,26 +5,26 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	2.29.91
+Version:	2.29.92
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.29/%{name}-%{version}.tar.bz2
-# Source0-md5:	06226d87a2af04703ebd8de3219a6fdc
+# Source0-md5:	3f873cf40c0475ef7010621b186ac021
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.76
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.20.0
+BuildRequires:	glib2-devel >= 1:2.22.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils
-BuildRequires:	gobject-introspection-devel
+BuildRequires:	gobject-introspection-devel >= 0.6.3
 BuildRequires:	gstreamer-devel >= 0.10.15
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
-BuildRequires:	gtk+2-devel >= 2:2.16.0
-BuildRequires:	gtk-doc >= 1.9
+BuildRequires:	gtk+2-devel >= 2:2.18.0
+BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.40.0
 %{?with_beagle:BuildRequires:	libbeagle-devel >= 0.3.0}
 BuildRequires:	libburn-devel >= 0.4.0
@@ -36,7 +36,7 @@ BuildRequires:	nautilus-devel >= 2.26.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	totem-pl-parser-devel >= 2.26.0
+BuildRequires:	totem-pl-parser-devel >= 2.29.1
 BuildRequires:	xorg-lib-libSM-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
@@ -77,8 +77,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Brasero
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dbus-glib-devel >= 0.76
-Requires:	glib2-devel >= 1:2.20.0
-Requires:	gtk+2-devel >= 2:2.16.0
+Requires:	glib2-devel >= 1:2.22.0
+Requires:	gtk+2-devel >= 2:2.18.0
 
 %description devel
 Header files for Brasero library.
