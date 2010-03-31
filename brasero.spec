@@ -5,25 +5,26 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	2.28.3
-Release:	3
+Version:	2.30.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	6ef5cc07325f1869577a85d15ac67eb3
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.30/%{name}-%{version}.tar.bz2
+# Source0-md5:	005f3f4ab586155645d1e8301a42fecc
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.76
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.20.0
+BuildRequires:	glib2-devel >= 1:2.22.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils
+BuildRequires:	gobject-introspection-devel >= 0.6.3
 BuildRequires:	gstreamer-devel >= 0.10.15
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
-BuildRequires:	gtk+2-devel >= 2:2.16.0
-BuildRequires:	gtk-doc >= 1.9
+BuildRequires:	gtk+2-devel >= 2:2.18.0
+BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.40.0
 %{?with_beagle:BuildRequires:	libbeagle-devel >= 0.3.0}
 BuildRequires:	libburn-devel >= 0.4.0
@@ -35,7 +36,7 @@ BuildRequires:	nautilus-devel >= 2.26.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	totem-pl-parser-devel >= 2.26.0
+BuildRequires:	totem-pl-parser-devel >= 2.30.0
 BuildRequires:	xorg-lib-libSM-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk+2
@@ -76,8 +77,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Brasero
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dbus-glib-devel >= 0.76
-Requires:	glib2-devel >= 1:2.20.0
-Requires:	gtk+2-devel >= 2:2.16.0
+Requires:	glib2-devel >= 1:2.22.0
+Requires:	gtk+2-devel >= 2:2.18.0
 
 %description devel
 Header files for Brasero library.
@@ -125,6 +126,8 @@ Dodaje integrację Brasero z Nautilusem.
 
 %prep
 %setup -q
+sed -i s#^en@shaw## po/LINGUAS
+rm po/en@shaw.po
 
 %build
 %{__gtkdocize}
@@ -139,7 +142,8 @@ Dodaje integrację Brasero z Nautilusem.
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
 	--disable-caches \
-	--disable-schemas-install
+	--disable-schemas-install \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -203,6 +207,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libbrasero-media.so.0
 %attr(755,root,root) %{_libdir}/libbrasero-utils.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libbrasero-utils.so.0
+%{_libdir}/girepository-1.0/*.typelib
 
 %files devel
 %defattr(644,root,root,755)
@@ -215,6 +220,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/brasero
 %{_pkgconfigdir}/libbrasero-burn.pc
 %{_pkgconfigdir}/libbrasero-media.pc
+%{_datadir}/gir-1.0/*.gir
 
 %files apidocs
 %defattr(644,root,root,755)
