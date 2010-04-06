@@ -18,6 +18,7 @@ BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.76
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.22.0
+BuildRequires:	glibc-misc
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gobject-introspection-devel >= 0.6.3
@@ -28,6 +29,8 @@ BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.40.0
 %{?with_beagle:BuildRequires:	libbeagle-devel >= 0.3.0}
 BuildRequires:	libburn-devel >= 0.4.0
+BuildRequires:	libcanberra-devel
+BuildRequires:	libcanberra-gtk-devel
 BuildRequires:	libisofs-devel >= 0.6.4
 BuildRequires:	libtool
 BuildRequires:	libunique-devel >= 1.0.0
