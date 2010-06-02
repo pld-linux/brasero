@@ -6,7 +6,7 @@ Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
 Version:	2.30.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.30/%{name}-%{version}.tar.bz2
@@ -155,6 +155,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/*.{la,a}
 %{__rm} -f $RPM_BUILD_ROOT%{_libdir}/brasero/plugins/lib*.{la,a}
 %{__rm} -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.{la,a}
 
@@ -217,9 +218,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libbrasero-burn.so
 %attr(755,root,root) %{_libdir}/libbrasero-media.so
 %attr(755,root,root) %{_libdir}/libbrasero-utils.so
-%{_libdir}/libbrasero-burn.la
-%{_libdir}/libbrasero-media.la
-%{_libdir}/libbrasero-utils.la
 %{_includedir}/brasero
 %{_pkgconfigdir}/libbrasero-burn.pc
 %{_pkgconfigdir}/libbrasero-media.pc
