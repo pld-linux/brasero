@@ -89,18 +89,6 @@ Header files for Brasero library.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki Brasero.
 
-%package static
-Summary:	Static Brasero library
-Summary(pl.UTF-8):	Statyczna biblioteka Brasero
-Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Static Brasero library.
-
-%description static -l pl.UTF-8
-Statyczna biblioteka Brasero.
-
 %package apidocs
 Summary:	Brasero library API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki Brasero
@@ -155,7 +143,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/*.{la,a}
+%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{__rm} -f $RPM_BUILD_ROOT%{_libdir}/brasero/plugins/lib*.{la,a}
 %{__rm} -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.{la,a}
 
