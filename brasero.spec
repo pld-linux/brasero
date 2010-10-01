@@ -5,26 +5,25 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	2.30.2
+Version:	2.32.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.30/%{name}-%{version}.tar.bz2
-# Source0-md5:	c1c995a01a087ad1d1062c8ed64405dd
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.32/%{name}-%{version}.tar.bz2
+# Source0-md5:	09aaa188f33caa0bcc71a7dfc4a3f9ad
 URL:		http://www.gnome.org/projects/brasero/
-BuildRequires:	GConf2-devel >= 2.24.0
+BuildRequires:	GConf2-devel >= 2.32.0
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	dbus-glib-devel >= 0.76
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.22.0
+BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	glibc-misc
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gobject-introspection-devel >= 0.6.3
 BuildRequires:	gstreamer-devel >= 0.10.15
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
-BuildRequires:	gtk+2-devel >= 2:2.18.0
+BuildRequires:	gtk+2-devel >= 2:2.22.0
 BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.40.0
 %{?with_beagle:BuildRequires:	libbeagle-devel >= 0.3.0}
@@ -40,12 +39,13 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	totem-pl-parser-devel >= 2.30.0
+BuildRequires:	tracker-devel >= 0.8.0
 BuildRequires:	xorg-lib-libSM-devel
 Requires(post,postun):	desktop-file-utils
+Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	shared-mime-info
-Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{version}-%{release}
 Suggests:	dvd+rw-tools
 Suggests:	gstreamer-audio-effects-base
@@ -79,9 +79,8 @@ Summary:	Header files for Brasero library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Brasero
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	dbus-glib-devel >= 0.76
-Requires:	glib2-devel >= 1:2.22.0
-Requires:	gtk+2-devel >= 2:2.18.0
+Requires:	glib2-devel >= 1:2.26.0
+Requires:	gtk+2-devel >= 2:2.22.0
 
 %description devel
 Header files for Brasero library.
@@ -153,18 +152,16 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install brasero.schemas
 %update_desktop_database_post
 %update_mime_database
 %update_icon_cache hicolor
-
-%preun
-%gconf_schema_uninstall brasero.schemas
+glib-compile-schemas %{_datadir}/glib-2.0/schemas
 
 %postun
 %update_desktop_database_postun
 %update_mime_database
 %update_icon_cache hicolor
+glib-compile-schemas %{_datadir}/glib-2.0/schemas
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
@@ -184,21 +181,21 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/brasero
 %dir %{_libdir}/brasero/plugins
 %attr(755,root,root) %{_libdir}/brasero/plugins/lib*.so
-%{_desktopdir}/brasero-copy-medium.desktop
+%{_datadir}/GConf/gsettings/brasero.convert
+%{_datadir}/glib-2.0/schemas/org.gnome.brasero.gschema.xml
 %{_desktopdir}/brasero.desktop
 %{_iconsdir}/hicolor/*/*/*.png
 %{_iconsdir}/hicolor/*/*/*.svg
 %{_mandir}/man1/brasero.1*
-%{_sysconfdir}/gconf/schemas/brasero.schemas
 
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libbrasero-burn.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libbrasero-burn.so.0
+%attr(755,root,root) %ghost %{_libdir}/libbrasero-burn.so.1
 %attr(755,root,root) %{_libdir}/libbrasero-media.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libbrasero-media.so.0
+%attr(755,root,root) %ghost %{_libdir}/libbrasero-media.so.1
 %attr(755,root,root) %{_libdir}/libbrasero-utils.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libbrasero-utils.so.0
+%attr(755,root,root) %ghost %{_libdir}/libbrasero-utils.so.1
 %{_libdir}/girepository-1.0/*.typelib
 
 %files devel
