@@ -6,7 +6,7 @@ Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
 Version:	2.32.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.32/%{name}-%{version}.tar.bz2
@@ -37,7 +37,7 @@ BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	nautilus-devel >= 2.26.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	totem-pl-parser-devel >= 2.30.0
 BuildRequires:	tracker-devel >= 0.8.0
 BuildRequires:	xorg-lib-libSM-devel
@@ -155,13 +155,13 @@ rm -rf $RPM_BUILD_ROOT
 %update_desktop_database_post
 %update_mime_database
 %update_icon_cache hicolor
-glib-compile-schemas %{_datadir}/glib-2.0/schemas
+%glib_compile_schemas
 
 %postun
 %update_desktop_database_postun
+%glib_compile_schemas
 %update_mime_database
 %update_icon_cache hicolor
-glib-compile-schemas %{_datadir}/glib-2.0/schemas
 
 %post	libs -p /sbin/ldconfig
 %postun	libs -p /sbin/ldconfig
