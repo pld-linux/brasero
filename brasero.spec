@@ -5,42 +5,43 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	2.32.1
-Release:	3
+Version:	3.0.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/2.32/%{name}-%{version}.tar.bz2
-# Source0-md5:	621293d228d895960fd297e28589fddf
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	1e12a6539ce8e7e7ec68fdeacd133a3e
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	GConf2-devel >= 2.32.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	glibc-misc
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils
 BuildRequires:	gobject-introspection-devel >= 0.6.3
 BuildRequires:	gstreamer-devel >= 0.10.15
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
-BuildRequires:	gtk+2-devel >= 2:2.22.0
+BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.40.0
 %{?with_beagle:BuildRequires:	libbeagle-devel >= 0.3.0}
 BuildRequires:	libburn-devel >= 0.4.0
 BuildRequires:	libcanberra-devel
-BuildRequires:	libcanberra-gtk-devel
+BuildRequires:	libcanberra-gtk3-devel
 BuildRequires:	libisofs-devel >= 0.6.4
-BuildRequires:	libtool
-BuildRequires:	libunique-devel >= 1.0.0
+BuildRequires:	libtool >= 2.2
+BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	nautilus-devel >= 2.26.0
+BuildRequires:	nautilus-devel >= 3.0.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	totem-pl-parser-devel >= 2.30.0
-BuildRequires:	tracker-devel >= 0.8.0
+#BuildRequires:	tracker-devel >= 0.8.0
 BuildRequires:	xorg-lib-libSM-devel
+BuildRequires:	xorg-lib-libICE-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk-update-icon-cache
@@ -79,8 +80,8 @@ Summary:	Header files for Brasero library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Brasero
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.26.0
-Requires:	gtk+2-devel >= 2:2.22.0
+Requires:	glib2-devel >= 1:2.28.0
+Requires:	gtk+3-devel >= 3.0.0
 
 %description devel
 Header files for Brasero library.
@@ -106,7 +107,7 @@ Summary(pl.UTF-8):	Rozszerzenie Brasero dla Nautilusa
 Group:		X11/Applications
 Requires(post,postun):	desktop-file-utils
 Requires:	%{name} = %{version}-%{release}
-Requires:	nautilus >= 2.26.0
+Requires:	nautilus >= 3.0.0
 
 %description -n nautilus-extension-brasero
 Adds Brasero integration to Nautilus.
@@ -130,7 +131,6 @@ Dodaje integrację Brasero z Nautilusem.
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
 	--disable-caches \
-	--disable-schemas-install \
 	--disable-silent-rules
 %{__make}
 
@@ -141,8 +141,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/brasero/plugins/lib*.{la,a}
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-2.0/*.{la,a}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/brasero3/plugins/lib*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/*.la
 
 %find_lang %{name} --with-gnome --with-omf
 
@@ -176,35 +176,59 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/brasero
 %{_datadir}/%{name}
 %{_datadir}/mime/packages/%{name}.xml
-%dir %{_libdir}/brasero
-%dir %{_libdir}/brasero/plugins
-%attr(755,root,root) %{_libdir}/brasero/plugins/lib*.so
+%dir %{_libdir}/brasero3
+%dir %{_libdir}/brasero3/plugins
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-audio2cue.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-burn-uri.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-cdda2wav.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-cdrdao.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-cdrecord.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-checksum-file.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-checksum.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-dvdauthor.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-dvdcss.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-dvdrwformat.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-genisoimage.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-growisofs.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-libburn.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-libisofs.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-local-track.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-mkisofs.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-normalize.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-readcd.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-readom.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-transcode.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-vcdimager.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-vob.so
+%attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-wodim.so
 %{_datadir}/GConf/gsettings/brasero.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.brasero.gschema.xml
 %{_desktopdir}/brasero.desktop
 %{_iconsdir}/hicolor/*/*/*.png
-%{_iconsdir}/hicolor/*/*/*.svg
 %{_mandir}/man1/brasero.1*
 
 %files libs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libbrasero-burn.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libbrasero-burn.so.1
-%attr(755,root,root) %{_libdir}/libbrasero-media.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libbrasero-media.so.1
-%attr(755,root,root) %{_libdir}/libbrasero-utils.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libbrasero-utils.so.1
-%{_libdir}/girepository-1.0/*.typelib
+%attr(755,root,root) %{_libdir}/libbrasero-burn3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libbrasero-burn3.so.1
+%attr(755,root,root) %{_libdir}/libbrasero-media3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libbrasero-media3.so.1
+%attr(755,root,root) %{_libdir}/libbrasero-utils3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libbrasero-utils3.so.1
+%{_libdir}/girepository-1.0/BraseroBurn-%{version}.typelib
+%{_libdir}/girepository-1.0/BraseroMedia-%{version}.typelib
+
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libbrasero-burn.so
-%attr(755,root,root) %{_libdir}/libbrasero-media.so
-%attr(755,root,root) %{_libdir}/libbrasero-utils.so
-%{_includedir}/brasero
-%{_pkgconfigdir}/libbrasero-burn.pc
-%{_pkgconfigdir}/libbrasero-media.pc
-%{_datadir}/gir-1.0/*.gir
+%attr(755,root,root) %{_libdir}/libbrasero-burn3.so
+%attr(755,root,root) %{_libdir}/libbrasero-media3.so
+%attr(755,root,root) %{_libdir}/libbrasero-utils3.so
+%{_includedir}/brasero3
+%{_pkgconfigdir}/libbrasero-burn3.pc
+%{_pkgconfigdir}/libbrasero-media3.pc
+%{_datadir}/gir-1.0/BraseroBurn-%{version}.gir
+%{_datadir}/gir-1.0/BraseroMedia-%{version}.gir
 
 %files apidocs
 %defattr(644,root,root,755)
@@ -213,5 +237,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n nautilus-extension-brasero
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-brasero-extension.so
+%attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libnautilus-brasero-extension.so
 %{_desktopdir}/brasero-nautilus.desktop
