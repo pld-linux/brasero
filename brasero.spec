@@ -6,7 +6,7 @@ Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
 Version:	3.0.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.0/%{name}-%{version}.tar.bz2
@@ -31,8 +31,8 @@ BuildRequires:	libburn-devel >= 0.4.0
 BuildRequires:	libcanberra-devel
 BuildRequires:	libcanberra-gtk3-devel
 BuildRequires:	libisofs-devel >= 0.6.4
-BuildRequires:	libtool >= 2.2
 BuildRequires:	libnotify-devel >= 0.6.1
+BuildRequires:	libtool >= 2.2
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	nautilus-devel >= 3.0.0
 BuildRequires:	pkgconfig
@@ -40,17 +40,24 @@ BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	totem-pl-parser-devel >= 2.30.0
 #BuildRequires:	tracker-devel >= 0.8.0
-BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libICE-devel
+BuildRequires:	xorg-lib-libSM-devel
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	shared-mime-info
 Requires:	%{name}-libs = %{version}-%{release}
+Requires:	hicolor-icon-theme
+Suggests:	cdda2wav
+Suggests:	cdrdao
+Suggests:	cdrecord
+Suggests:	cdrecord-readcd
 Suggests:	dvd+rw-tools
+Suggests:	dvdauthor
 Suggests:	gstreamer-audio-effects-base
 Suggests:	gstreamer-audio-effects-good
+Suggests:	mkisofs
+Suggests:	vcdimager
 Obsoletes:	bonfire
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
