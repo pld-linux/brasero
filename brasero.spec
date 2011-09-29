@@ -1,22 +1,17 @@
-#
-# Conditinal build:
-%bcond_without	beagle		# disable beagle search
-#
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	3.0.0
-Release:	2
+Version:	3.2.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	1e12a6539ce8e7e7ec68fdeacd133a3e
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.2/%{name}-%{version}.tar.xz
+# Source0-md5:	b4b13ce81a344b81ddd3a64a3003787b
 URL:		http://www.gnome.org/projects/brasero/
-BuildRequires:	GConf2-devel >= 2.32.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	glibc-misc
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils
@@ -26,7 +21,6 @@ BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.40.0
-%{?with_beagle:BuildRequires:	libbeagle-devel >= 0.3.0}
 BuildRequires:	libburn-devel >= 0.4.0
 BuildRequires:	libcanberra-devel
 BuildRequires:	libcanberra-gtk3-devel
@@ -38,10 +32,12 @@ BuildRequires:	nautilus-devel >= 3.0.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.592
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 2.30.0
-#BuildRequires:	tracker-devel >= 0.8.0
+BuildRequires:	tracker-devel >= 0.12.0
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
+BuildRequires:	xz
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk-update-icon-cache
@@ -87,7 +83,7 @@ Summary:	Header files for Brasero library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Brasero
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.28.0
+Requires:	glib2-devel >= 1:2.30.0
 Requires:	gtk+3-devel >= 3.0.0
 
 %description devel
@@ -134,7 +130,6 @@ Dodaje integrację Brasero z Nautilusem.
 %{__autoheader}
 %{__automake}
 %configure \
-	%{!?with_beagle:--disable-search} \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
 	--disable-caches \
