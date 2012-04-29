@@ -47,7 +47,7 @@ Requires:	hicolor-icon-theme
 Suggests:	cdda2wav
 Suggests:	cdrdao
 Suggests:	cdrecord
-Suggests:	cdrecord-readcd
+Suggests:	cdrtools-readcd
 Suggests:	dvd+rw-tools
 Suggests:	dvdauthor
 Suggests:	gstreamer-audio-effects-base
