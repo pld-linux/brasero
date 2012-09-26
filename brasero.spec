@@ -1,12 +1,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	3.4.1
+Version:	3.6.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	2eed4821826cc5121e430a43a2e78112
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.6/%{name}-%{version}.tar.xz
+# Source0-md5:	8157becacd2193e923d4537dd632ebb3
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -14,10 +14,9 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	glibc-misc
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-doc-utils
 BuildRequires:	gobject-introspection-devel >= 0.6.3
-BuildRequires:	gstreamer-devel >= 0.10.15
-BuildRequires:	gstreamer-plugins-base-devel >= 0.10.0
+BuildRequires:	gstreamer-devel >= 1.0.0
+BuildRequires:	gstreamer-plugins-base-devel >= 1.0.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.40.0
@@ -38,6 +37,7 @@ BuildRequires:	tracker-devel >= 0.14.0
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xz
+BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	gtk-update-icon-cache
