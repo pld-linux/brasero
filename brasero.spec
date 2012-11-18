@@ -1,12 +1,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	3.6.0
-Release:	2
+Version:	3.6.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	8157becacd2193e923d4537dd632ebb3
+# Source0-md5:	1bf94b5d75f4a003b3d139d50e620c7b
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -217,8 +217,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libbrasero-media3.so.1
 %attr(755,root,root) %{_libdir}/libbrasero-utils3.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libbrasero-utils3.so.1
-%{_libdir}/girepository-1.0/BraseroBurn-%{version}.typelib
-%{_libdir}/girepository-1.0/BraseroMedia-%{version}.typelib
+%{_libdir}/girepository-1.0/BraseroBurn-*.typelib
+%{_libdir}/girepository-1.0/BraseroMedia-*.typelib
 
 
 %files devel
@@ -229,8 +229,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/brasero3
 %{_pkgconfigdir}/libbrasero-burn3.pc
 %{_pkgconfigdir}/libbrasero-media3.pc
-%{_datadir}/gir-1.0/BraseroBurn-%{version}.gir
-%{_datadir}/gir-1.0/BraseroMedia-%{version}.gir
+%{_datadir}/gir-1.0/BraseroBurn-*.gir
+%{_datadir}/gir-1.0/BraseroMedia-*.gir
 
 %files apidocs
 %defattr(644,root,root,755)
