@@ -5,7 +5,7 @@ Version:	3.12.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.10/%{name}-%{version}.tar.xz
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.12/%{name}-%{version}.tar.xz
 # Source0-md5:	3a12a2b954b265c751ef29669d589908
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
