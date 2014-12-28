@@ -10,7 +10,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.12/%{name}-%{version}.
 URL:		http://www.gnome.org/projects/brasero/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	glibc-misc
 BuildRequires:	gnome-common >= 2.24.0
