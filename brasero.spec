@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	nautilus	# Nautilus extension
+#
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
@@ -8,7 +12,7 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.12/%{name}-%{version}.tar.xz
 # Source0-md5:	216691249053448a9f2b4ee5e118ce72
 URL:		http://www.gnome.org/projects/brasero/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.30.0
@@ -19,7 +23,7 @@ BuildRequires:	gstreamer-devel >= 1.0.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.12
-BuildRequires:	intltool >= 0.40.0
+BuildRequires:	intltool >= 0.50
 BuildRequires:	libburn-devel >= 0.4.0
 BuildRequires:	libcanberra-devel
 BuildRequires:	libcanberra-gtk3-devel
@@ -27,7 +31,7 @@ BuildRequires:	libisofs-devel >= 0.6.4
 BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	libtool >= 2.2
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	nautilus-devel >= 3.0.0
+%{?with_nautilus:BuildRequires:	nautilus-devel >= 3.0.0}
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.592
@@ -130,10 +134,11 @@ Dodaje integrację Brasero z Nautilusem.
 %{__autoheader}
 %{__automake}
 %configure \
-	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir} \
 	--disable-caches \
-	--disable-silent-rules
+	--enable-gtk-doc \
+	%{!?with_nautilus:--disable-nautilus} \
+	--disable-silent-rules \
+	--with-html-dir=%{_gtkdocdir}
 %{__make} -j1
 
 %install
@@ -144,9 +149,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/brasero3/plugins/lib*.la
+%if %{with nautilus}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions-3.0/*.la
+%endif
 
-%find_lang %{name} --with-gnome --with-omf
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -239,7 +246,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_gtkdocdir}/libbrasero-burn
 %{_gtkdocdir}/libbrasero-media
 
+%if %{with nautilus}
 %files -n nautilus-extension-brasero
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/nautilus/extensions-3.0/libnautilus-brasero-extension.so
 %{_desktopdir}/brasero-nautilus.desktop
+%endif
