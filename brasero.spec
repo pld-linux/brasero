@@ -11,7 +11,7 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.12/%{name}-%{version}.tar.xz
 # Source0-md5:	216691249053448a9f2b4ee5e118ce72
-URL:		http://www.gnome.org/projects/brasero/
+URL:		https://wiki.gnome.org/Apps/Brasero
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	gettext-tools
