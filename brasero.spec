@@ -5,31 +5,32 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	3.12.1
-Release:	3
+Version:	3.12.2
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	216691249053448a9f2b4ee5e118ce72
+# Source0-md5:	2dec59c179e49e37f1cfc0dd26344a2e
+Patch0:		%{name}-gtkdoc.patch
 URL:		https://wiki.gnome.org/Apps/Brasero
 BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.6
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	glibc-misc
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gobject-introspection-devel >= 0.6.3
+BuildRequires:	gobject-introspection-devel >= 1.30.0
 BuildRequires:	gstreamer-devel >= 1.0.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.0.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-doc >= 1.12
 BuildRequires:	intltool >= 0.50
 BuildRequires:	libburn-devel >= 0.4.0
-BuildRequires:	libcanberra-devel
-BuildRequires:	libcanberra-gtk3-devel
+BuildRequires:	libcanberra-devel >= 0.1
+BuildRequires:	libcanberra-gtk3-devel >= 0.1
 BuildRequires:	libisofs-devel >= 0.6.4
 BuildRequires:	libnotify-devel >= 0.6.1
-BuildRequires:	libtool >= 2.2
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.31
 %{?with_nautilus:BuildRequires:	nautilus-devel >= 3.0.0}
 BuildRequires:	pkgconfig
@@ -43,11 +44,14 @@ BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.26.0
+Requires(post,postun):	glib2 >= 1:2.30.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	shared-mime-info
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	hicolor-icon-theme
+Requires:	libburn >= 0.4.0
+Requires:	libisofs >= 0.6.4
+Requires:	libxml2 >= 1:2.6.31
 Suggests:	cdda2wav
 Suggests:	cdrdao
 Suggests:	cdrecord
@@ -75,6 +79,8 @@ Jest zaprojektowany by być prostym i łatwym w obsłudze.
 Summary:	Brasero library
 Summary(pl.UTF-8):	Biblioteka Brasero
 Group:		X11/Libraries
+Requires:	glib2 >= 1:2.30.0
+Requires:	libnotify-devel >= 0.6.1
 
 %description libs
 Brasero library.
@@ -127,6 +133,7 @@ Dodaje integrację Brasero z Nautilusem.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__gtkdocize}
@@ -184,11 +191,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/brasero
 %{_datadir}/appdata/brasero.appdata.xml
-%{_datadir}/%{name}
-%{_datadir}/mime/packages/%{name}.xml
+%{_datadir}/brasero
+%{_datadir}/mime/packages/brasero.xml
 %dir %{_libdir}/brasero3
 %dir %{_libdir}/brasero3/plugins
 %attr(755,root,root) %{_libdir}/brasero3/plugins/libbrasero-audio2cue.so
@@ -217,8 +224,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/GConf/gsettings/brasero.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.brasero.gschema.xml
 %{_desktopdir}/brasero.desktop
-%{_iconsdir}/hicolor/*/*/*.png
-%{_iconsdir}/hicolor/scalable/apps/*.svg
+%{_iconsdir}/hicolor/*x*/apps/brasero.png
+%{_iconsdir}/hicolor/scalable/apps/brasero-symbolic.svg
 %{_mandir}/man1/brasero.1*
 
 %files libs
@@ -229,8 +236,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libbrasero-media3.so.1
 %attr(755,root,root) %{_libdir}/libbrasero-utils3.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libbrasero-utils3.so.1
-%{_libdir}/girepository-1.0/BraseroBurn-*.typelib
-%{_libdir}/girepository-1.0/BraseroMedia-*.typelib
+%{_libdir}/girepository-1.0/BraseroBurn-3.1.typelib
+%{_libdir}/girepository-1.0/BraseroMedia-3.1.typelib
 
 
 %files devel
@@ -238,11 +245,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libbrasero-burn3.so
 %attr(755,root,root) %{_libdir}/libbrasero-media3.so
 %attr(755,root,root) %{_libdir}/libbrasero-utils3.so
+%{_datadir}/gir-1.0/BraseroBurn-3.1.gir
+%{_datadir}/gir-1.0/BraseroMedia-3.1.gir
 %{_includedir}/brasero3
 %{_pkgconfigdir}/libbrasero-burn3.pc
 %{_pkgconfigdir}/libbrasero-media3.pc
-%{_datadir}/gir-1.0/BraseroBurn-*.gir
-%{_datadir}/gir-1.0/BraseroMedia-*.gir
 
 %files apidocs
 %defattr(644,root,root,755)

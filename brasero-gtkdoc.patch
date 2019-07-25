@@ -1,0 +1,40 @@
+--- brasero-3.12.2/docs/reference/libbrasero-burn/Makefile.am.orig	2014-02-19 10:16:54.000000000 +0100
++++ brasero-3.12.2/docs/reference/libbrasero-burn/Makefile.am	2019-07-25 19:51:22.386875133 +0200
+@@ -25,7 +25,7 @@
+ 
+ # Extra options to supply to gtkdoc-scan.
+ # e.g. SCAN_OPTIONS=--deprecated-guards="GTK_DISABLE_DEPRECATED" 
+-SCAN_OPTIONS=
++SCAN_OPTIONS=--rebuild-types
+ 
+ # Extra options to supply to gtkdoc-mkdb.
+ # e.g. MKDB_OPTIONS=--sgml-mode --output-format=xml
+@@ -114,7 +114,7 @@
+ 	$(BRASERO_IO_CFLAGS)						\
+ 	$(BRASERO_GTK_CFLAGS)
+ 
+-GTKDOC_LIBS=$(top_builddir)/libbrasero-media/libbrasero-media.la $(top_builddir)/libbrasero-burn/libbrasero-burn.la
++GTKDOC_LIBS=$(top_builddir)/libbrasero-media/libbrasero-media3.la $(top_builddir)/libbrasero-burn/libbrasero-burn3.la
+ 
+ # This includes the standard gtk-doc make rules, copied by gtkdocize.
+ include $(top_srcdir)/gtk-doc.make
+--- brasero-3.12.2/docs/reference/libbrasero-media/Makefile.am.orig	2014-02-19 10:16:54.000000000 +0100
++++ brasero-3.12.2/docs/reference/libbrasero-media/Makefile.am	2019-07-25 19:51:48.453400585 +0200
+@@ -25,7 +25,7 @@
+ 
+ # Extra options to supply to gtkdoc-scan.
+ # e.g. SCAN_OPTIONS=--deprecated-guards="GTK_DISABLE_DEPRECATED" 
+-SCAN_OPTIONS=
++SCAN_OPTIONS=--rebuild-types
+ 
+ # Extra options to supply to gtkdoc-mkdb.
+ # e.g. MKDB_OPTIONS=--sgml-mode --output-format=xml
+@@ -111,7 +111,7 @@
+ 	$(BRASERO_IO_CFLAGS)						\
+ 	$(BRASERO_GTK_CFLAGS)
+ 
+-GTKDOC_LIBS=$(top_builddir)/libbrasero-media/libbrasero-media.la
++GTKDOC_LIBS=$(top_builddir)/libbrasero-media/libbrasero-media3.la
+ 
+ # This includes the standard gtk-doc make rules, copied by gtkdocize.
+ include $(top_srcdir)/gtk-doc.make
