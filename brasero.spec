@@ -5,13 +5,12 @@
 Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
-Version:	3.12.2
-Release:	2
+Version:	3.12.3
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/brasero/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	2dec59c179e49e37f1cfc0dd26344a2e
-Patch0:		%{name}-gtkdoc.patch
+Source0:	https://download.gnome.org/sources/brasero/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	ae48248dd36f89282d573eb7a0a1391f
 URL:		https://wiki.gnome.org/Apps/Brasero
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.6
@@ -34,11 +33,12 @@ BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.31
 %{?with_nautilus:BuildRequires:	nautilus-devel >= 3.0.0}
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	totem-pl-parser-devel >= 2.30.0
-BuildRequires:	tracker-devel >= 0.16.0
+BuildRequires:	tracker3-devel >= 3.0
 BuildRequires:	xorg-lib-libICE-devel
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xz
@@ -131,7 +131,6 @@ Dodaje integrację Brasero z Nautilusem.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__gtkdocize}
@@ -191,8 +190,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/brasero
-%{_datadir}/appdata/brasero.appdata.xml
 %{_datadir}/brasero
+%{_datadir}/metainfo/brasero.appdata.xml
 %{_datadir}/mime/packages/brasero.xml
 %dir %{_libdir}/brasero3
 %dir %{_libdir}/brasero3/plugins
