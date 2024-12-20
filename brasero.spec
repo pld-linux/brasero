@@ -6,11 +6,12 @@ Summary:	Disc burning application for GNOME
 Summary(pl.UTF-8):	Program do wypalania płyt dla GNOME
 Name:		brasero
 Version:	3.12.3
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/brasero/3.12/%{name}-%{version}.tar.xz
 # Source0-md5:	ae48248dd36f89282d573eb7a0a1391f
+Patch0:		gcc14.patch
 URL:		https://wiki.gnome.org/Apps/Brasero
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.6
@@ -31,7 +32,7 @@ BuildRequires:	libisofs-devel >= 0.6.4
 BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.31
-%{?with_nautilus:BuildRequires:	nautilus-devel >= 3.0.0}
+%{?with_nautilus:BuildRequires:	nautilus3-devel >= 3.0.0}
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.23
@@ -131,6 +132,7 @@ Dodaje integrację Brasero z Nautilusem.
 
 %prep
 %setup -q
+%patch -P 0 -p1
 
 %build
 %{__gtkdocize}
