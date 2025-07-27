@@ -33,6 +33,7 @@ BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 1:2.6.31
 %{?with_nautilus:BuildRequires:	nautilus3-devel >= 3.0.0}
+BuildRequires:	perl-Scalar-List-Utils
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.23
